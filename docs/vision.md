@@ -1,1 +1,0 @@
-A ideia geral do site, porque ele existe, o que deve fazer sentir.
