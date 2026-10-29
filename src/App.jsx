@@ -1,17 +1,26 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import ComingSoon from './pages/ComingSoon';
+import './App.css';
 
-function App() 
-{
+export default function App() {
   return (
-    <main>
-      <header>
-        <img src='/coracaoRosa.svg'></img>
-      </header>
-      <section>
-        
-      </section>
-    </main>
-  )
+    <div className="app">
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cartas" element={<ComingSoon />} />
+          <Route path="/mapa" element={<ComingSoon />} />
+          <Route path="/scrapbook" element={<ComingSoon />} />
+          <Route path="/trilha" element={<ComingSoon />} />
+          <Route path="/linha-do-tempo" element={<ComingSoon />} />
+          <Route path="/futuro" element={<ComingSoon />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
 }
-
-export default App

@@ -1,0 +1,116 @@
+/* ===== Reset básico ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== Design tokens (ver docs/design.md) ===== */
+:root {
+  /* Paleta principal */
+  --color-blush: #ffacdb; /* Primary — Rosa Suave */
+  --color-peach: #ffe0bb; /* Secondary — Amarelo Quente */
+  --color-lavender: #d1b5ee; /* Tertiary — Roxo Suave */
+  --color-cream: #fff9f5; /* Neutral — Off-White Quente */
+
+  /* Texto e acentos */
+  --color-ink: #3d2e35;
+  --color-ink-deep: #2e2227;
+  --color-wine: #804760;
+  --color-olive: #6e5a3d;
+  --color-plum: #5c4375;
+  --color-canvas: #d6d0cc;
+
+  /* Tipografia */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Literata", Georgia, serif;
+  --font-hand: "Caveat", cursive;
+
+  /* Forma */
+  --radius-card: 20px;
+  --radius-card-lg: 28px;
+  --radius-pill: 999px;
+
+  /* Sombra (tons quentes, nunca preto puro) */
+  --shadow-e1: 0px 4px 20px rgba(61, 46, 53, 0.05);
+  --shadow-e2: 0px 12px 32px rgba(61, 46, 53, 0.1);
+  --shadow-e3: 0px 20px 48px rgba(61, 46, 53, 0.15);
+
+  /* Movimento */
+  --ease-cinematic: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-blush);
+  color: var(--color-ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-wine);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Layout helpers compartilhados ===== */
+.container {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
