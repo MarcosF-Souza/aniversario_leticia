@@ -87,7 +87,8 @@
   position: relative;
   margin-inline: auto;
   width: 100%;
-  max-width: 280px;
+  height: 110%;
+  max-width: 260px;
   display: none;
 }
 
@@ -97,6 +98,11 @@
   background: white;
   padding: 12px 12px 24px;
   box-shadow: var(--shadow-e2);
+}
+
+img{
+  width: 100%;
+  
 }
 
 .polaroid--front {
@@ -115,7 +121,7 @@
 .polaroid__frame {
   aspect-ratio: 4 / 5;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;

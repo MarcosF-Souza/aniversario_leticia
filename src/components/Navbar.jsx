@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="navbar__row">
         <NavLink to="/" className="navbar__brand">
           <Heart size={18} color="#FFACDB" fill="#FFACDB" strokeWidth={2.5} />
-          Um ano de nós
+          Feliz Aniversário
         </NavLink>
 
         <nav className="navbar__links">

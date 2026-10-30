@@ -36,11 +36,10 @@ export default function RoomTour() {
     <section className="room-tour">
       <div className="room-tour__intro">
         <h2 className="room-tour__title">
-          Cada cômodo guarda uma parte da história
+          Cada página tem um significado
         </h2>
         <p className="room-tour__subtitle">
-          Explore como quiser — não existe ordem certa para reviver uma
-          memória.
+          Explore como quiser, meu amor.
         </p>
       </div>
 

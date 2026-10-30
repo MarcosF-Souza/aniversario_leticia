@@ -1,5 +1,5 @@
 // Datas e conteúdo centrais do projeto.
-// Ajuste aqui quando quiser trocar textos ou datas — os componentes leem tudo daqui.
+// Ajustar quando trocar textos ou datas — os componentes leem tudo daqui.
 
 export const dates = {
   aniversarioLeticia: '2026-11-04',
@@ -13,21 +13,21 @@ export const milestones = [
     id: 'conhecemos',
     tag: 'Halloween, 25 de outubro',
     title: 'O dia em que nos conhecemos',
-    text: 'Uma festa de Halloween qualquer, até você aparecer. O verdadeiro ponto de partida de tudo o que viria depois.',
+    text: 'Uma festa de Halloween qualquer, até eu ter descoberto que a garota de rosa gostava de mim.',
     stamp: '25/10',
   },
   {
     id: 'encontro',
-    tag: 'Jardim de Alah · Leblon',
+    tag: 'Shopping Leblon',
     title: 'Nosso primeiro encontro',
-    text: 'Cinema no Shopping Leblon, Koni depois e uma garrafa de vinho que, sem querer, virou símbolo daquele dia.',
+    text: 'Cinema no Shopping Leblon, Koni depois e uma garrafa de vinho. Não sei como essa combinação deu certo',
     stamp: '01/11',
   },
   {
     id: 'beijo',
     tag: 'Estação Jardim de Alah',
     title: 'Nosso primeiro beijo',
-    text: 'Toda a expectativa do encontro deu lugar a uma certeza silenciosa. O marco simbólico da nossa história.',
+    text: 'Você acabou vencendo aquela aposta, aff.',
     stamp: '01/11',
   },
 ];
@@ -37,16 +37,16 @@ export const rooms = [
     id: 'cartas',
     icon: 'Mail',
     label: 'Cartinhas & Textos',
-    title: 'As cartas que escrevemos',
-    text: 'Declarações, textos espontâneos e reflexões — a evolução do que sentimos, guardada em palavras.',
+    title: 'As cartas que escrevi',
+    text: 'Declarações, textos espontâneos e reflexões — a evolução do que acabei sentindo por você',
     accent: 'peach',
   },
   {
     id: 'mapa',
     icon: 'MapPin',
     label: 'Nosso Mapa',
-    title: 'Os lugares que viramos nossos',
-    text: 'Jardim de Alah, Koni, a praia, os cafés. Lugares comuns que se tornaram especiais por termos vivido neles.',
+    title: 'Os lugares que viraram nossos',
+    text: 'Jardim de Alah, Koni, a praia de São Conrado. Lugares comuns que se tornaram especiais por termos vivido boas memórias.',
     accent: 'lavender',
   },
   {
@@ -61,8 +61,8 @@ export const rooms = [
     id: 'trilha',
     icon: 'Music',
     label: 'Nossa Trilha Sonora',
-    title: 'As músicas da nossa história',
-    text: 'A do primeiro encontro, as de viagem, os covers que gravei pra você. Uma máquina do tempo emocional.',
+    title: 'As músicas que já toquei para você',
+    text: 'Os covers que gravei pra você e músicas que já toquei pessoalmente.',
     accent: 'lavender',
   },
   {
@@ -70,7 +70,7 @@ export const rooms = [
     icon: 'Clock',
     label: 'Linha do Tempo',
     title: 'Tudo, em ordem, de novo',
-    text: 'Mês a mês, a evolução completa do que construímos — pra reviver sempre que quiser.',
+    text: 'Mês a mês, a evolução completa do que construímos.',
     accent: 'peach',
   },
   {
@@ -78,7 +78,7 @@ export const rooms = [
     icon: 'Gift',
     label: 'Futuro Juntos',
     title: 'Meu momento favorito ainda não aconteceu',
-    text: 'Uma carta pra abrir daqui a um ano, sonhos, planos e tudo que ainda vamos construir juntos.',
+    text: 'Tudo que ainda vamos construir juntos.',
     accent: 'blush',
     featured: true,
   },

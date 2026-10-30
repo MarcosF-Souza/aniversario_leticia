@@ -7,9 +7,9 @@ export default function Milestones() {
   return (
     <section className="milestones">
       <div className="milestones__intro">
-        <h2 className="milestones__title">Três datas que mudaram tudo</h2>
+        <h2 className="milestones__title">Quatro datas que mudaram tudo</h2>
         <p className="milestones__subtitle">
-          Antes das cartas, do mapa e do scrapbook — foi aqui que a nossa
+          Antes das cartas, dos aniversários comemorados e de várias outras coisas — foi aqui que a nossa
           história começou a ser escrita.
         </p>
       </div>

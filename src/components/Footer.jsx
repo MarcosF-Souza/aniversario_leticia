@@ -6,10 +6,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__content">
         <Heart size={20} color="#FFACDB" fill="#FFACDB" />
-        <p className="footer__title">Um ano de nós</p>
+        <p className="footer__title">Parabéns à minha outra metade</p>
         <p className="footer__tagline">
-          Feito à mão, um detalhe de cada vez — pra você reler sempre que
-          quiser.
+          Sempre que você quiser, pode revisitar esse site
         </p>
       </div>
     </footer>
