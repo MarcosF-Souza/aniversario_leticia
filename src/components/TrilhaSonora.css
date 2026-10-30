@@ -1,0 +1,359 @@
+.trilha {
+  position: relative;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: 160px 20px 64px;
+  overflow: hidden;
+}
+
+.trilha__glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.trilha__glow--lavender {
+  top: -40px;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  opacity: 0.45;
+  background: radial-gradient(circle, #d1b5ee, transparent 70%);
+}
+
+.trilha__glow--peach {
+  top: 260px;
+  left: -64px;
+  width: 260px;
+  height: 260px;
+  opacity: 0.3;
+  background: radial-gradient(circle, #ffe0bb, transparent 70%);
+}
+
+/* ===== Cabeçalho ===== */
+.trilha__intro {
+  position: relative;
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+
+.trilha__kicker {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--color-wine);
+}
+
+.trilha__title {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.trilha__lead {
+  margin: 16px 0 0;
+  color: rgba(61, 46, 53, 0.7);
+}
+
+.trilha__count {
+  position: relative;
+  margin: 0 0 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(61, 46, 53, 0.4);
+}
+
+.trilha__empty {
+  position: relative;
+  color: rgba(61, 46, 53, 0.7);
+}
+
+/* ===== Grade de faixas ===== */
+.trilha__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.trilha__grid > li {
+  animation: track-in 700ms var(--ease-cinematic) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+.trilha__grid > li:nth-child(3n + 1) {
+  --tilt: -1deg;
+}
+
+.trilha__grid > li:nth-child(3n + 2) {
+  --tilt: 0.75deg;
+}
+
+.trilha__grid > li:nth-child(3n) {
+  --tilt: -0.5deg;
+}
+
+@keyframes track-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Faixa (cartão estilo foto colada) ===== */
+.track {
+  display: flex;
+  width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
+  flex-direction: column;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(128, 71, 96, 0.1);
+  background-color: white;
+  padding: 12px 12px 22px;
+  box-shadow: var(--shadow-e1);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 300ms var(--ease-cinematic), box-shadow 300ms var(--ease-cinematic),
+    border-color 300ms var(--ease-cinematic);
+}
+
+.track:hover {
+  transform: translateY(-4px) rotate(var(--tilt, 0deg));
+  box-shadow: var(--shadow-e2);
+}
+
+/* Com o vídeo aberto, o cartão endireita: um player torto atrapalha. */
+.track--active,
+.track--active:hover {
+  transform: none;
+  border-color: rgba(128, 71, 96, 0.35);
+  box-shadow: var(--shadow-e2);
+}
+
+/* O palco já nasce com a proporção do vídeo, então nada "pula" quando ele abre. */
+.track__stage {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: var(--color-ink-deep);
+}
+
+.track__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: var(--color-ink-deep);
+}
+
+/* ===== Capa: disco de vinil ===== */
+.track__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 25% 15%, rgba(255, 172, 219, 0.5), transparent 55%),
+    radial-gradient(circle at 85% 92%, rgba(255, 224, 187, 0.8), transparent 55%),
+    linear-gradient(160deg, rgba(209, 181, 238, 0.7), rgba(209, 181, 238, 0.3)),
+    var(--color-cream);
+  color: var(--color-plum);
+}
+
+.track__cover:focus-visible {
+  outline-offset: -6px;
+  border-radius: inherit;
+}
+
+.track__number {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-wine);
+}
+
+.track__vinyl {
+  position: relative;
+  display: grid;
+  width: 78%;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: var(--shadow-e2);
+}
+
+/* Sulcos e reflexo ficam numa camada própria: só ela gira, o botão de play não. */
+.track__grooves {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 20deg,
+      transparent 0 18%,
+      rgba(255, 249, 245, 0.16) 25%,
+      transparent 32% 68%,
+      rgba(255, 249, 245, 0.1) 75%,
+      transparent 82%
+    ),
+    repeating-radial-gradient(circle at center, #3d2e35 0 2px, #4a3942 2px 4px);
+}
+
+.track__cover:hover .track__grooves,
+.track__cover:focus-visible .track__grooves {
+  animation: track-spin 9s linear infinite;
+}
+
+@keyframes track-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.track__label {
+  position: relative;
+  display: flex;
+  width: 40%;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-wine);
+  background-color: var(--color-lavender);
+  color: var(--color-plum);
+  transition: transform 300ms var(--ease-cinematic), background-color 300ms var(--ease-cinematic);
+}
+
+.track__label svg {
+  margin-left: 2px; /* compensa o peso visual do triângulo */
+}
+
+.track__cover:hover .track__label,
+.track__cover:focus-visible .track__label {
+  transform: scale(1.08);
+  background-color: var(--color-blush);
+}
+
+.track__hint {
+  position: absolute;
+  bottom: 14px;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-plum);
+}
+
+/* ===== Erro ao carregar ===== */
+.track__error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--color-cream);
+  text-align: center;
+  color: var(--color-ink);
+}
+
+.track__error p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.track__retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 172, 219, 0.3);
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-wine);
+  transition: background-color 200ms var(--ease-cinematic);
+}
+
+.track__retry:hover {
+  background-color: rgba(255, 172, 219, 0.5);
+}
+
+/* ===== Informações da música ===== */
+.track__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 8px 0;
+}
+
+.track__index {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--color-wine);
+}
+
+.track__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+.track__artist {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-plum);
+}
+
+.track__note {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(61, 46, 53, 0.7);
+}
+
+/* ===== Responsivo ===== */
+@media (min-width: 560px) {
+  .trilha__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .trilha__title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .trilha__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

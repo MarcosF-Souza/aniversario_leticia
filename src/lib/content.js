@@ -241,3 +241,22 @@ export const scrapbookSections = [
 //   'nome-do-arquivo.jpeg': 'Sua legenda aqui',
 // Sem legenda, a foto aparece sem texto.
 export const scrapbookCaptions = {};
+
+
+// Trilha Sonora (página "Trilha Sonora" — covers em vídeo). Os vídeos ficam em assets/Música.
+// Para adicionar um cover:
+//   1. coloque o arquivo (.mp4, .webm ou .mov) dentro de assets/Música
+//   2. copie um item abaixo e preencha:
+//      file   -> nome do arquivo, com extensão (ex.: 'iris.mp4')
+//      title  -> título da música
+//      artist -> (opcional) artista ou banda original
+//      note   -> (opcional) dedicatória ou lembrança, mostrada abaixo do título
+//      aspect -> (opcional) proporção do vídeo, ex.: '16 / 9'. Padrão: '474 / 850' (vertical, como os atuais)
+// A ordem desta lista é a ordem das faixas na página. Um arquivo que estiver na pasta
+// mas não na lista aparece sozinho no fim, usando o nome do arquivo como título.
+export const covers = [
+  { file: 'doIWannaKnow.mp4', title: 'Do I Wanna Know?' },
+  { file: 'fluxoPerfeito.mp4', title: 'Fluxo Perfeito' },
+  { file: 'iris.mp4', title: 'Iris' },
+  { file: 'perfect.mp4', title: 'Perfect' },
+];

@@ -6,6 +6,7 @@ import ComingSoon from './pages/ComingSoon';
 import Cartinhas from './components/Cartinhas';
 import NossoMapa from './components/NossoMapa';
 import Scrapbook from './components/Scrapbook';
+import TrilhaSonora from './components/TrilhaSonora';
 import './App.css';
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
           <Route path="/cartas" element={<Cartinhas />} />
           <Route path="/mapa" element={<NossoMapa />} />
           <Route path="/scrapbook" element={<Scrapbook />} />
-          <Route path="/trilha" element={<ComingSoon />} />
+          <Route path="/trilha" element={<TrilhaSonora />} />
           <Route path="/linha-do-tempo" element={<ComingSoon />} />
           <Route path="/futuro" element={<ComingSoon />} />
         </Routes>
