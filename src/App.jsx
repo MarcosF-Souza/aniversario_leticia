@@ -7,6 +7,7 @@ import Cartinhas from './components/Cartinhas';
 import NossoMapa from './components/NossoMapa';
 import Scrapbook from './components/Scrapbook';
 import TrilhaSonora from './components/TrilhaSonora';
+import LinhaDoTempo from './components/LinhaDoTempo';
 import './App.css';
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
           <Route path="/mapa" element={<NossoMapa />} />
           <Route path="/scrapbook" element={<Scrapbook />} />
           <Route path="/trilha" element={<TrilhaSonora />} />
-          <Route path="/linha-do-tempo" element={<ComingSoon />} />
+          <Route path="/linha-do-tempo" element={<LinhaDoTempo />} />
           <Route path="/futuro" element={<ComingSoon />} />
         </Routes>
       </main>

@@ -70,7 +70,7 @@ export const rooms = [
     icon: 'Clock',
     label: 'Linha do Tempo',
     title: 'Tudo, em ordem, de novo',
-    text: 'Mês a mês, a evolução completa do que construímos.',
+    text: 'Nossa evolução ao longo dos meses.',
     accent: 'peach',
   },
   {
@@ -259,4 +259,71 @@ export const covers = [
   { file: 'fluxoPerfeito.mp4', title: 'Fluxo Perfeito' },
   { file: 'iris.mp4', title: 'Iris' },
   { file: 'perfect.mp4', title: 'Perfect' },
+];
+
+// Linha do Tempo (página "Linha do Tempo"). A página lê tudo daqui e ordena sozinha por `date`,
+// então a ordem em que você escreve os itens não importa. Para adicionar um acontecimento,
+// copie um item e preencha:
+//   id            -> texto único, sem espaços (ex.: 'primeiro-natal')
+//   date          -> 'AAAA-MM-DD' (ou só 'AAAA-MM', se não lembrar o dia). É o que define a ordem.
+//   tag           -> (opcional) rótulo curto acima do título, ex.: 'Primeiro encontro'
+//   title         -> título do acontecimento
+//   text          -> o que aconteceu
+//   photo         -> (opcional) caminho da foto dentro de assets/images, ex.: '1º Encontro/foto.jpeg'
+//   photoAlt      -> descrição da foto para leitores de tela (use sempre que houver `photo`)
+//   photoPosition -> (opcional) enquadramento do corte, ex.: 'center 20%'. Padrão: 'center'
+// O "N dias depois de nos conhecermos" é calculado sozinho a partir de dates.nosConhecemos.
+// Os textos abaixo vêm de milestones e places — pode editar aqui sem mexer lá.
+export const timeline = [
+  {
+    id: 'conhecemos',
+    date: dates.nosConhecemos,
+    tag: 'Festa de Halloween',
+    title: 'O dia em que nos conhecemos',
+    text: 'Uma festa de Halloween qualquer, até eu ter descoberto que a garota de rosa gostava de mim.',
+    photo: 'WhatsApp Image 2026-10-30 at 17.42.40.jpeg',
+    photoAlt: 'Foto do grupo todo na festa Halloween do ano passado',
+    photoPosition: 'center 30%',
+  },
+  {
+    id: 'primeiro-encontro',
+    date: dates.primeiroEncontro,
+    tag: 'Shopping Leblon · Koni',
+    title: 'Nosso primeiro encontro',
+    text: 'Cinema no Shopping Leblon, Koni depois e uma garrafa de vinho. Não sei como essa combinação deu certo.',
+    photo: '1º Encontro/WhatsApp Image 2026-10-11 at 00.10.52.jpeg',
+    photoAlt: 'Selfie dos dois, bem juntinhos e sorrindo',
+    photoPosition: 'center 30%',
+  },
+  {
+    id: 'primeiro-beijo',
+    date: dates.primeiroBeijo,
+    tag: 'Estação Jardim de Alah',
+    title: 'Nosso primeiro beijo',
+    text: 'Você acabou vencendo aquela aposta, aff.',
+    photo: '1º Encontro/WhatsApp Image 2026-10-11 at 00.12.26(2).jpeg',
+    photoAlt: 'Selfie dos dois, bem juntinhos e sorrindo',
+    photoPosition: 'center 30%',
+  },
+  {
+    id: 'pedido-de-namoro',
+    date: '2026-02-07',
+    tag: 'Museu da República',
+    title: 'O dia em que te pedi em namoro',
+    text: 'Tremendo e suando bastante, mesmo assim consegui.',
+    photo: 'WhatsApp Image 2026-10-30 at 18.36.40.jpeg',
+    photoAlt: 'Foto minha e da letícia sorrindo',
+    photoPosition: 'center 30%',
+
+  },
+  {
+    id: 'orquestra-metallica',
+    date: '2026-05-13',
+    tag: 'Cidade das Artes',
+    title: 'Orquestra Sinfônica do Metallica',
+    text: 'Fomos comemorar o meu aniversário de 20 anos.',
+    photo:'WhatsApp Image 2026-10-30 at 18.39.05.jpeg',
+    photoAlt: 'Foto nossa sorrindo',
+    photoPosition: 'center 0%',
+  },
 ];
