@@ -1,0 +1,595 @@
+.scrapbook {
+  position: relative;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: 160px 20px 64px;
+  overflow: hidden;
+  /* "clip" corta igual, mas não vira contêiner de rolagem — senão a revelação
+     ao rolar (animation-timeline: view()) mediria o elemento errado. */
+  overflow: clip;
+}
+
+.scrapbook__glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.scrapbook__glow--blush {
+  top: -40px;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  opacity: 0.4;
+  background: radial-gradient(circle, #ffacdb, transparent 70%);
+}
+
+.scrapbook__glow--peach {
+  top: 220px;
+  left: -64px;
+  width: 260px;
+  height: 260px;
+  opacity: 0.3;
+  background: radial-gradient(circle, #ffe0bb, transparent 70%);
+}
+
+/* ===== Cabeçalho ===== */
+.scrapbook__intro {
+  position: relative;
+  max-width: 560px;
+}
+
+.scrapbook__kicker {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--color-wine);
+}
+
+.scrapbook__title {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.scrapbook__lead {
+  margin: 16px 0 0;
+  color: rgba(61, 46, 53, 0.7);
+}
+
+.scrapbook__empty {
+  position: relative;
+  margin-top: 40px;
+  color: rgba(61, 46, 53, 0.7);
+}
+
+.scrapbook__chips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.scrapbook__chip {
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(128, 71, 96, 0.1);
+  background-color: rgba(255, 249, 245, 0.85);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-wine);
+  transition: background-color 200ms var(--ease-cinematic);
+}
+
+.scrapbook__chip:hover {
+  background-color: rgba(255, 172, 219, 0.3);
+}
+
+/* ===== Página do álbum (uma por pasta) ===== */
+.album-page {
+  position: relative;
+  margin-top: 40px;
+  padding: 28px 14px 44px;
+  border-radius: var(--radius-card-lg);
+  border: 1px solid rgba(128, 71, 96, 0.1);
+  box-shadow: var(--shadow-e1);
+  scroll-margin-top: 96px;
+}
+
+.album-page--peach {
+  background: linear-gradient(to bottom, rgba(255, 224, 187, 0.4), rgba(255, 249, 245, 0.9));
+}
+
+.album-page--blush {
+  background: linear-gradient(to bottom, rgba(255, 172, 219, 0.16), rgba(255, 249, 245, 0.9));
+}
+
+/* Costura tracejada, como a borda de uma folha de álbum. */
+.album-page::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed rgba(128, 71, 96, 0.14);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.album-page__head {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-inline: 6px;
+}
+
+.album-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.album-page__meta {
+  margin: 4px 0 0;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--color-wine);
+}
+
+.album-page__stamp {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px dashed rgba(128, 71, 96, 0.3);
+  background-color: rgba(255, 224, 187, 0.4);
+  transform: rotate(6deg);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--color-wine);
+}
+
+/* Colunas deixam cada recordação com a altura natural (fotos em pé, deitadas e vídeos). */
+.album-page__board {
+  position: relative;
+  column-count: 2;
+  column-gap: 18px;
+}
+
+.album-page__item {
+  position: relative;
+  top: var(--drop, 0px); /* desnível sutil, para não alinhar tudo em linha */
+  break-inside: avoid;
+  margin-bottom: 26px;
+}
+
+/* Páginas com poucas recordações: centralizadas, sem colunas. */
+.album-page__board--few {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-count: auto;
+  gap: 24px;
+}
+
+.album-page__board--few .album-page__item {
+  width: min(200px, 42%);
+  margin-bottom: 0;
+}
+
+/* Revelação ao rolar (só onde o navegador suporta; sem isso tudo aparece direto). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .album-page__item {
+      animation: print-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes print-reveal {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ===== Recordação colada na página ===== */
+.print {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(61, 46, 53, 0.06);
+  background-color: white;
+  text-align: left;
+  box-shadow: var(--shadow-e1);
+  rotate: var(--tilt, 0deg);
+  transition:
+    scale 300ms var(--ease-cinematic),
+    rotate 300ms var(--ease-cinematic),
+    box-shadow 300ms var(--ease-cinematic);
+}
+
+.print:hover,
+.print:focus-visible {
+  scale: 1.02;
+  rotate: calc(var(--tilt, 0deg) * 0.4);
+  box-shadow: var(--shadow-e2);
+}
+
+.print--polaroid {
+  padding-bottom: 0;
+}
+
+.print__photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: rgba(255, 224, 187, 0.4);
+  line-height: 0;
+}
+
+/* Luz analógica: um véu quente quase imperceptível sobre a mídia. */
+.print__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 172, 219, 0.12),
+    transparent 45%,
+    rgba(255, 224, 187, 0.18)
+  );
+}
+
+/* "auto <razão>" reserva espaço antes de carregar e passa a usar a proporção real depois. */
+.print__media {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto 3 / 4;
+  object-fit: cover;
+}
+
+.print__media--video {
+  aspect-ratio: auto 9 / 16;
+}
+
+.print__strip {
+  display: block;
+  min-height: 44px;
+  padding: 8px 4px 6px;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--color-wine);
+}
+
+.print__play {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  padding-left: 3px;
+  border-radius: 50%;
+  background-color: rgba(255, 172, 219, 0.92);
+  color: var(--color-wine);
+  box-shadow: var(--shadow-e2);
+  transition: scale 300ms var(--ease-cinematic);
+}
+
+.print:hover .print__play {
+  scale: 1.08;
+}
+
+.print__duration {
+  position: absolute;
+  z-index: 1;
+  right: 8px;
+  bottom: 8px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(46, 34, 39, 0.72);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--color-cream);
+}
+
+/* Fita adesiva */
+.print__tape {
+  position: absolute;
+  z-index: 1;
+  top: -11px;
+  left: 50%;
+  width: 68px;
+  height: 22px;
+  margin-left: -34px;
+  rotate: -4deg;
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.28) 0 5px, transparent 5px 10px),
+    var(--tape, rgba(255, 172, 219, 0.6));
+  box-shadow: 0 1px 3px rgba(61, 46, 53, 0.12);
+  pointer-events: none;
+}
+
+.print__tape--blush {
+  --tape: rgba(255, 172, 219, 0.6);
+}
+
+.print__tape--lavender {
+  --tape: rgba(209, 181, 238, 0.65);
+  rotate: 3deg;
+}
+
+.print__tape--peach {
+  --tape: rgba(255, 224, 187, 0.8);
+  top: 6px;
+  left: -16px;
+  margin-left: 0;
+  rotate: -38deg;
+}
+
+/* Coração colado no canto */
+.print__heart {
+  position: absolute;
+  z-index: 1;
+  right: -9px;
+  bottom: -9px;
+  rotate: 12deg;
+  filter: drop-shadow(0 2px 3px rgba(61, 46, 53, 0.18));
+  pointer-events: none;
+}
+
+/* ===== Visualização ampliada ===== */
+.lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-cream);
+  overflow: hidden;
+}
+
+.lightbox[open] {
+  display: flex;
+  animation: lightbox-in 300ms var(--ease-cinematic);
+}
+
+.lightbox::backdrop {
+  background-color: rgba(46, 34, 39, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox__stage {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 72px 16px 20px;
+  pointer-events: none;
+}
+
+.lightbox__close,
+.lightbox__figure,
+.lightbox__bar {
+  pointer-events: auto;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 249, 245, 0.9);
+  color: var(--color-wine);
+  transition: background-color 200ms var(--ease-cinematic);
+}
+
+.lightbox__close:hover {
+  background-color: var(--color-blush);
+}
+
+.lightbox__figure {
+  margin: 0;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: var(--shadow-e3);
+  animation: lightbox-swap 350ms var(--ease-cinematic);
+}
+
+@keyframes lightbox-swap {
+  from {
+    opacity: 0;
+    scale: 0.98;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.lightbox__media {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 900px);
+  max-height: calc(100dvh - 190px);
+  background-color: var(--color-ink-deep);
+}
+
+.lightbox__caption {
+  margin: 0;
+  padding: 10px 4px 2px;
+  font-family: var(--font-hand);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  color: var(--color-wine);
+}
+
+.lightbox__figure:has(.lightbox__caption) .lightbox__media {
+  max-height: calc(100dvh - 240px);
+}
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lightbox__count {
+  margin: 0;
+  min-width: 160px;
+  text-align: center;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 249, 245, 0.85);
+}
+
+.lightbox__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 249, 245, 0.9);
+  color: var(--color-wine);
+  transition: background-color 200ms var(--ease-cinematic);
+}
+
+.lightbox__nav:hover:not(:disabled) {
+  background-color: var(--color-blush);
+}
+
+.lightbox__nav:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 559px) {
+  .album-page {
+    padding-inline: 12px;
+  }
+
+  .print {
+    padding: 6px;
+  }
+
+  .print__tape {
+    width: 52px;
+    height: 18px;
+    margin-left: -26px;
+  }
+
+  .print__strip {
+    min-height: 38px;
+    font-size: 1.125rem;
+  }
+
+  .lightbox__count {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .lightbox__bar {
+    width: 100%;
+    max-width: 360px;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 560px) {
+  .album-page {
+    padding: 36px 28px 56px;
+  }
+
+  .album-page__title {
+    font-size: 1.75rem;
+  }
+
+  .album-page__board {
+    column-count: 3;
+    column-gap: 24px;
+  }
+
+  .album-page__board--few {
+    column-count: auto;
+    gap: 32px;
+  }
+
+  .album-page__board--few .album-page__item {
+    width: min(230px, 30%);
+  }
+}
+
+@media (min-width: 768px) {
+  .scrapbook__title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .album-page__board {
+    column-count: 4;
+    column-gap: 28px;
+  }
+
+  .album-page__board--few {
+    column-count: auto;
+  }
+}

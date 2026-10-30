@@ -53,8 +53,8 @@ export const rooms = [
     id: 'scrapbook',
     icon: 'Image',
     label: 'Scrapbook',
-    title: 'Um álbum vivo de memórias',
-    text: 'Cada foto conta uma história — não apenas mostra um momento, mas lembra o que sentimos nele.',
+    title: 'Nosso álbum',
+    text: 'Cada foto e vídeo é uma parte do que vivemos nesse último ano.',
     accent: 'blush',
   },
   {
@@ -221,3 +221,23 @@ export const places = [
     text: 'Comemorando meu 1º salário e onde vamos comemorar seu aniversário.',
   },
 ];
+
+// Scrapbook (página "Scrapbook"). As fotos e vídeos vêm de assets/images e assets/videos;
+// cada subpasta vira uma "página" do álbum. Aqui você escolhe o título e a ordem das páginas.
+//   folder -> nome da subpasta (igual ao do disco). '' = arquivos soltos, direto em images/ e videos/
+//   title  -> título mostrado na página do álbum
+// Subpastas novas que não estiverem na lista aparecem sozinhas no fim, com o nome da pasta como título.
+export const scrapbookSections = [
+  { folder: '1º Encontro', title: '1º Encontro' },
+  { folder: 'praia', title: 'Praia' },
+  { folder: 'aniversario', title: 'Aniversário' },
+  { folder: 'HotZone', title: 'HotZone' },
+  { folder: 'Música', title: 'Música' },
+  { folder: '', title: 'Mais recordações' },
+];
+ 
+// Legendas opcionais, escritas à mão no rodapé da foto. A chave é o nome do arquivo
+// (com extensão), por exemplo:
+//   'nome-do-arquivo.jpeg': 'Sua legenda aqui',
+// Sem legenda, a foto aparece sem texto.
+export const scrapbookCaptions = {};
