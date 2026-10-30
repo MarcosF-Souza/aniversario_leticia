@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ComingSoon from './pages/ComingSoon';
 import Cartinhas from './components/Cartinhas';
+import NossoMapa from './components/NossoMapa';
 import './App.css';
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cartas" element={<Cartinhas />} />
-          <Route path="/mapa" element={<ComingSoon />} />
+          <Route path="/mapa" element={<NossoMapa />} />
           <Route path="/scrapbook" element={<ComingSoon />} />
           <Route path="/trilha" element={<ComingSoon />} />
           <Route path="/linha-do-tempo" element={<ComingSoon />} />

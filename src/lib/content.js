@@ -92,3 +92,50 @@ export const navLinks = [
   { to: '/trilha', label: 'Trilha Sonora' },
   { to: '/linha-do-tempo', label: 'Linha do Tempo' },
 ];
+
+// Pontos do mapa (página "Nosso Mapa"). Para adicionar um lugar, copie um item e preencha:
+//   id    -> texto único, sem espaços (ex.: 'koni')
+//   name  -> nome do lugar
+//   tag   -> (opcional) rótulo curto, ex.: 'Primeiro encontro'
+//   date  -> (opcional) 'AAAA-MM-DD'
+//   lat/lng -> coordenadas. No Google Maps: clique com o botão direito no local e copie os números.
+//              Em `npm run dev`, clicar no mapa também mostra as coordenadas do ponto.
+//   text  -> o que aconteceu ali
+// Os textos abaixo vêm do que já está no projeto — troque pelos seus.
+export const places = [
+  {
+    id: 'jardim-de-alah',
+    name: 'Estação Jardim de Alah',
+    tag: 'Primeiro beijo',
+    date: '2025-11-01',
+    lat: -22.983577,
+    lng: -43.215846,
+    text: 'Você acabou vencendo aquela aposta, aff.',
+  },
+  {
+    id: 'shopping-leblon',
+    name: 'Shopping Leblon',
+    tag: 'Primeiro encontro',
+    date: '2025-11-01',
+    lat: -22.9867, // aproximado — confira clicando no mapa em `npm run dev`
+    lng: -43.2239,
+    text: 'O cinema do nosso primeiro encontro.',
+  },
+  {
+    id: 'koni',
+    name: 'Koni do Leblon',
+    tag: 'Primeiro encontro',
+    date: '2025-11-01',
+    lat: -22.9862, // aproximado — Av. Ataulfo de Paiva, 320
+    lng: -43.2243,
+    text: 'Depois do cinema, o Koni.',
+  },
+  {
+    id: 'praia-sao-conrado',
+    name: 'Praia de São Conrado',
+    tag: 'Conversas na praia',
+    lat: -22.9992, // aproximado — ajuste para o ponto exato
+    lng: -43.274,
+    text: 'Longas conversas à beira-mar, onde a nossa conexão foi se aprofundando.',
+  },
+];
